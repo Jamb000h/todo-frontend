@@ -1,10 +1,13 @@
 import React from 'react';
-import Todo from './Todo';
+import TodoList from './TodoList';
 
 function App() {
+
+  const todos = ["Todo1", "Todo2", "Todo3"];
+
   return (
     <div className="App">
-      <Todo text="I am a todo" />
+      <TodoList todos={todos} />
     </div>
   );
 }
