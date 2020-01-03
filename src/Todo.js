@@ -9,9 +9,7 @@ const Todo = props => {
       }
     >
       {props.text}
-      <input type="checkbox" onChange={ () => {
-        return props.isDone ? props.setDone(false) : props.setDone(true);
-      }}/>
+      <input type="checkbox" onChange={() => props.toggleDone()} checked={props.isDone} />
     </li>
   )
 }

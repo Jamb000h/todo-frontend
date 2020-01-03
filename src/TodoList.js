@@ -2,52 +2,30 @@ import React from "react";
 import Todo from "./Todo";
 
 const TodoList = props => {
-    if(props.filter === "showAll") {
-        return (
-            <ul>
-                {   
-                    props.todos.map((todo, index) => {
-                    return <Todo 
-                            text={todo.text}
-                            key={index}
-                            isDone={props.isDone}
-                            setDone={props.setDone}
-                            />
-                    })
-                }
-            </ul>
-        )
-    } else if(props.filter === "done"){
-        return (
-            <ul>
-                {   
-                    props.todos.filter(todo => todo.isDone).map((todo, index) => {
-                    return <Todo 
-                            text={todo.text}
-                            key={index}
-                            isDone={props.isDone}
-                            setDone={props.setDone}
-                            />
-                    })
-                }
-            </ul>
-        )
-    } else if(props.filter === "notDone"){
-        return (
-            <ul>
-                {   
-                    props.todos.filter(todo => todo.isDone).map((todo, index) => {
-                    return <Todo 
-                            text={todo.text}
-                            key={index}
-                            isDone={props.isDone}
-                            setDone={props.setDone}
-                            />
-                    })
-                }
-            </ul>
-        )
-    }
+    const filteredTodos = props.todos
+    .filter(todo => {
+        if (props.filter === "showAll") {
+            return true;
+        }
+
+        if (props.filter === "done") {
+            return todo.isDone === true;
+        }
+
+        return todo.isDone === false;
+    })
+    .map(todo => (
+        <Todo
+            key={todo.id}
+            isDone={todo.isDone}
+            text={todo.text}
+            toggleDone={() => props.toggleDone(todo.id)}
+            />
+    ))
+
+    return (
+        <ul>{filteredTodos}</ul>
+    )
 }
 
 export default TodoList;
