@@ -9,7 +9,7 @@ const TodoForm = props => {
             onSubmit={ event => {
                 event.preventDefault();
                 props.saveTodo(value);
-                console.log(value);
+                setValue("");
             }}
         >
             <label>
