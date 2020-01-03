@@ -4,8 +4,9 @@ import TodoForm from "./TodoForm";
 
 function App() {
 
-  /* const todos = ["todo1", "todo2", "todo3"]; */
-  const [todos, setTodo] = useState(["todo1", "todo2", "todo3"]);
+  const [todos, setTodo] = useState([]);
+  const [done, setDone] = useState(false);
+  const [filter, changeFilter] = useState("showAll");
 
   return (
     <div className="App">
@@ -13,12 +14,12 @@ function App() {
           const trimmedText = todoText.trim();
 
           if(trimmedText.length > 0){
-            setTodo([...todos, trimmedText]);
+            setTodo([...todos, {text: todoText, isDone: done}]);
           }
         }} 
 
       />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} filter={filter} isDone={done} setDone={setDone}/>
     </div>
   );
 }

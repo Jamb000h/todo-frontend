@@ -4,9 +4,16 @@ import Todo from "./Todo";
 const TodoList = props => {
     return (
         <ul>
-            {props.todos.map(todo => {
-                return <Todo text={todo}/>
-            })}
+            {   
+                props.todos.map((todo, index) => {
+                return <Todo 
+                        text={todo.text}
+                        key={index}
+                        isDone={props.isDone}
+                        setDone={props.setDone}
+                        />
+            })
+            }
         </ul>
     )
 }

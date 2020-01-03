@@ -1,18 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 const Todo = props => {
 
-  const [isDone, setDone] = useState(false);
-
   return (
-    <li 
+    <li
       style={
-        isDone ? {textDecoration: "line-through red"} : {textDecoration: "initial"}
+        props.isDone ? {textDecoration: "line-through red"} : {textDecoration: "initial"}
       }
     >
       {props.text}
       <input type="checkbox" onChange={ () => {
-        return isDone ? setDone(false) : setDone(true);
+        return props.isDone ? props.setDone(false) : props.setDone(true);
       }}/>
     </li>
   )
